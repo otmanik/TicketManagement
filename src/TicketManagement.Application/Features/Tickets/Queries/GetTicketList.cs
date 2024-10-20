@@ -28,7 +28,7 @@ namespace TicketManagementSystem.Application.Features.Tickets.Queries
 
         public async Task<TicketListVm> Handle(GetTicketListQuery request, CancellationToken cancellationToken)
         {
-            var tickets = await _unitOfWork.Tickets.GetPagedReponseAsync(request.PageNumber, request.PageSize);
+            var (tickets, totalCount) = await _unitOfWork.Tickets.GetPagedResponseAsync(request.PageNumber, request.PageSize);
             var ticketDtos = _mapper.Map<List<TicketDto>>(tickets);
 
             return new TicketListVm
@@ -36,6 +36,7 @@ namespace TicketManagementSystem.Application.Features.Tickets.Queries
                 Tickets = ticketDtos,
                 PageNumber = request.PageNumber,
                 PageSize = request.PageSize,
+                TotalCount = totalCount
             };
         }
     }
@@ -57,6 +58,7 @@ namespace TicketManagementSystem.Application.Features.Tickets.Queries
         public IList<TicketDto> Tickets { get; set; }
         public int PageNumber { get; set; }
         public int PageSize { get; set; }
+        public int TotalCount { get; set; }
     }
 
     public class TicketDto

@@ -4,6 +4,6 @@ namespace TicketManagementSystem.Application.Interfaces
 {
     public interface ITicketRepository : IRepository<Ticket>
     {
-        public Task<IEnumerable<Ticket>> GetPagedReponseAsync(int pageNumber, int pageSize);
+        Task<(IEnumerable<Ticket> Tickets, int TotalCount)> GetPagedResponseAsync(int pageNumber, int pageSize);
     }
 }

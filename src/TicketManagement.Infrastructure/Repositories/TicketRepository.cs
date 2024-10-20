@@ -11,12 +11,16 @@ namespace TicketManagementSystem.Infrastructure.Repositories
         {
         }
 
-        public async Task<IEnumerable<Ticket>> GetPagedReponseAsync(int pageNumber, int pageSize)
+        public async Task<(IEnumerable<Ticket> Tickets, int TotalCount)> GetPagedResponseAsync(int pageNumber, int pageSize)
         {
-            return await _context.Tickets
+            var totalCount = await _context.Tickets.CountAsync();
+            var tickets = await _context.Tickets
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
                 .ToListAsync();
+
+            return (tickets, totalCount);
         }
+
     }
 }
