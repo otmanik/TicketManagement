@@ -39,7 +39,7 @@ This project is a full-stack web application for managing tickets, built with .N
    dotnet run
    ```
 
-The API should now be running on `https://localhost:5001`.
+The API should now be running on `https://localhost:7288`.
 
 ## Frontend Setup
 
@@ -58,12 +58,12 @@ The API should now be running on `https://localhost:5001`.
    npm start
    ```
 
-The frontend application should now be running on `http://localhost:3000`.
+The frontend application should now be running on `http://localhost:5174`.
 
 ## Running the Application
 
 1. Ensure that both the backend and frontend are running.
-2. Open your browser and navigate to `http://localhost:3000`.
+2. Open your browser and navigate to `http://localhost:5174`.
 3. You should see the Ticket Management System interface.
 
 ## Additional Information
