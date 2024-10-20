@@ -17,6 +17,7 @@ interface TicketResponse {
   tickets: Ticket[];
   pageNumber: number;
   pageSize: number;
+  totalCount: number;
 }
 
 interface TicketTableProps {
@@ -38,7 +39,7 @@ const TicketTable: React.FC<TicketTableProps> = ({
     return <Typography>Loading tickets...</Typography>;
   }
 
-  const { tickets, pageNumber, pageSize } = ticketData;
+  const { tickets, pageNumber, pageSize, totalCount } = ticketData;
 
   const handleChangePage = (event: unknown, newPage: number) => {
     onPageChange(newPage + 1);
@@ -91,7 +92,7 @@ const TicketTable: React.FC<TicketTableProps> = ({
       </TableContainer>
       <TablePagination
         component="div"
-        count={-1}
+        count={totalCount}
         page={pageNumber - 1}
         onPageChange={handleChangePage}
         rowsPerPage={pageSize}
