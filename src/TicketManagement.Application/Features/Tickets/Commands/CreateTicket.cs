@@ -30,7 +30,7 @@ namespace TicketManagementSystem.Application.Features.Tickets.Commands
             {
                 Description = request.Description,
                 Date = request.Date,
-                Status = TicketStatus.Open 
+                Status = TicketStatus.Open
             };
 
             await _unitOfWork.Tickets.AddAsync(ticket);
@@ -49,8 +49,7 @@ namespace TicketManagementSystem.Application.Features.Tickets.Commands
                 .MaximumLength(200).WithMessage("Description must not exceed 200 characters.");
 
             RuleFor(v => v.Date)
-                .NotEmpty().WithMessage("Date is required.")
-                .LessThanOrEqualTo(DateTime.UtcNow).WithMessage("Date cannot be in the future.");
+                .NotEmpty().WithMessage("Date is required.");
         }
     }
 }

@@ -60,8 +60,7 @@ namespace TicketManagementSystem.Application.Features.Tickets.Commands
                 .IsInEnum().WithMessage("Invalid status.");
 
             RuleFor(v => v.Date)
-                .NotEmpty().WithMessage("Date is required.")
-                .LessThanOrEqualTo(DateTime.UtcNow).WithMessage("Date cannot be in the future.");
+                .NotEmpty().WithMessage("Date is required.");
         }
     }
 }

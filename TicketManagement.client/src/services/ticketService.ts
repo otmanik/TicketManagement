@@ -5,7 +5,8 @@ import { API_BASE_URL } from "../constants";
 export interface TicketResponse {
   tickets: Ticket[];
   pageNumber: number;
-  pageSize: number;
+  totalCount: number;
+  totalPages: number;
 }
 
 export const fetchTickets = async (
